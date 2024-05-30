@@ -1,10 +1,10 @@
 /* Markdown */
 :root{
---maincolor: red;
+--maincolor: black;
 --bordercl:rebeccapurple;
 --callouctcolor:dodgerblue;
 --hovercolor:navy;
---darkMaincolor: #50fa7b;
+--darkMaincolor: white;
 }
 html {
   color: #232333;
