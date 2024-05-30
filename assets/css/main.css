@@ -1,9 +1,11 @@
 /* Markdown */
 :root{
 --maincolor: black;
---bordercl:rebeccapurple;
+/* --bordercl:rebeccapurple; */
+--bordercl:black;
 --callouctcolor:dodgerblue;
---hovercolor:navy;
+/* --hovercolor:navy; */
+--hovercolor:rgb(121, 121, 121);
 --darkMaincolor: white;
 }
 html {
@@ -20,9 +22,15 @@ body{
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-::selection {
+/* ::selection {
   background: var(--maincolor);
   color: #fff;
+} */
+
+::selection {
+  background: rgb(69, 112, 192);
+  color: #fff;
+  text-shadow: none;
 }
 
 p {
