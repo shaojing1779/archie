@@ -49,11 +49,11 @@
 		
 		<div class="line-divider"></div>
 		<div class="post-navigation">
-			{{ if .Prev }}
-			  <a href="{{ .Prev.Permalink }}" class="prev-post">Previous Post: {{ .Prev.Title }}</a>
-			{{ end }}
 			{{ if .Next }}
-			  <a href="{{ .Next.Permalink }}" class="next-post">Next Post: {{ .Next.Title }}</a>
+			  <a href="{{ .Next.Permalink }}" class="next-post">Prev: {{ .Next.Title }}</a>
+		    {{ end }}
+			{{ if .Prev }}
+			  <a href="{{ .Prev.Permalink }}" class="prev-post">Next: {{ .Prev.Title }}</a>
 			{{ end }}
 		</div>
 	</article>
