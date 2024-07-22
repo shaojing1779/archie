@@ -5,6 +5,28 @@
 			<h1 class="title">{{ .Title }}</h1>
 			<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
 		</div>
+
+		<div class="post-tags">
+			{{ if ne .Type "page" }}
+			{{ if gt .Params.tags 0 }}
+			<nav class="nav tags">
+				<strong>Tags: </strong>
+				<span>
+				{{ range .Params.tags }}
+				<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+				{{ end }}
+				</span>
+			</nav>
+			{{ end }}
+			{{ end }}
+		</div>
+
+		{{ if isset .Params "description" }}
+		<div class="description">
+			{{ .Params.description }}
+		</div>
+		{{ end }}
+
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
 			<strong>tl;dr:</strong>
@@ -15,19 +37,6 @@
 			{{ .Content }}
 		</section>
 
-		<div class="post-tags">
-			{{ if ne .Type "page" }}
-			{{ if gt .Params.tags 0 }}
-			<nav class="nav tags">
-				<ul class="tags">
-					{{ range .Params.tags }}
-					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-					{{ end }}
-				</ul>
-			</nav>
-			{{ end }}
-			{{ end }}
-		</div>
 		{{- $.Scratch.Set "isDisqus" true -}}
 		<!-- Check if disqus short name is given -->
 		{{ if not .Site.Config.Services.Disqus.Shortname }}
@@ -37,6 +46,16 @@
 		{{- if eq ($.Scratch.Get "isDisqus") true -}}
 		{{- partial "disqus.html" . -}}
 		{{- end -}}
+		
+		<div class="line-divider"></div>
+		<div class="post-navigation">
+			{{ if .Prev }}
+			  <a href="{{ .Prev.Permalink }}" class="prev-post">Previous Post: {{ .Prev.Title }}</a>
+			{{ end }}
+			{{ if .Next }}
+			  <a href="{{ .Next.Permalink }}" class="next-post">Next Post: {{ .Next.Title }}</a>
+			{{ end }}
+		</div>
 	</article>
 </main>
 {{ end }}

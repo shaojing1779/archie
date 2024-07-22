@@ -339,3 +339,37 @@ table td{
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
+
+.post-tags {
+  margin-bottom: 20px; /* Adjust this value as needed for spacing */
+}
+
+.description {
+  margin-top: 20px; /* Adjust this value as needed for spacing */
+}
+
+/* Style for the virtual line divider */
+.line-divider {
+  border-top: 1px dashed #ccc; /* Dashed line with light gray color */
+  margin: 20px 0; /* Space above and below the line */
+}
+
+.post-navigation {
+  display: flex;          /* Enables flexbox layout */
+  justify-content: space-between; /* Distributes space between items */
+  align-items: center;    /* Vertically centers items */
+  margin-top: 20px;       /* Adds some space above the navigation */
+}
+
+.prev-post {
+  text-align: left;       /* Aligns text to the left */
+  margin: 0;              /* Removes default margin */
+  padding: 0;             /* Removes default padding */
+  padding-top: 10px;      /* Adds space above the text to show the dashed line */
+}
+
+.next-post {
+  text-align: right;      /* Aligns text to the right */
+  margin-top: 10px;       /* Adds some space above the 'Next Post' */
+  padding: 0;             /* Removes default padding */
+}
