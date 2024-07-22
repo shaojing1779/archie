@@ -21,7 +21,12 @@
 					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
 				</section>
 				{{ end }}
-				{{ template "partials/paginator.html" . }}
+				<!-- Add separator before paginator -->
+                <div class="line-divider"></div>
+				<!-- Pagination container -->
+				<div class="pagination-container">
+					{{ template "partials/paginator.html" . }}
+				</div>
 			</main>
 			{{ partial "footer.html" . }}
 		</div>

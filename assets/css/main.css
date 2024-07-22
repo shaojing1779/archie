@@ -373,3 +373,34 @@ table td{
   margin-top: 10px;       /* Adds some space above the 'Next Post' */
   padding: 0;             /* Removes default padding */
 }
+
+/* Style for pagination container */
+.pagination-container {
+  margin: 20px 0; /* Space around pagination */
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: space-between; /* Space between prev and next */
+  align-items: center;
+}
+
+.page-prev {
+  flex: 1;
+  text-align: left;
+}
+
+.page-next {
+  flex: 1;
+  text-align: right;
+}
+
+.page-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.page-link:hover {
+  text-decoration: underline;
+}
