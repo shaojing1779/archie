@@ -20,7 +20,8 @@ hr {
   border-top: 3px dotted blue;
 }
 code {
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  background-color: #bebebe;
   color: black;
   text-decoration: bold;
   padding: 0.1em 0.2em;
