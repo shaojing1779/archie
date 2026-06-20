@@ -1,39 +1,49 @@
+/* ============================================
+   Dark mode — Solarized Dark, desaturated toward gray-black
+   bg: #1c1f25  text: #9aabb4  accent: #5f8faf
+   ============================================ */
 body {
-  color: white;
-  /* background-color: #202124; */
-  background-color: #000000;
+  color: #9aabb4;
+  background-color: #1c1f25;
 }
 
 ::-moz-selection {
-  background: blue;
-  color: #fff;
+  background: #5f8faf;
+  color: #1c1f25;
   text-shadow: none;
 }
 
 ::selection {
-  background: orange;
-  color: #fff;
+  background: #5f8faf;
+  color: #1c1f25;
   text-shadow: none;
 }
 
-hr {
-  border-top: 3px dotted blue;
+html {
+  background-color: #1c1f25;
 }
+
+hr {
+  border-top: 2px solid #3a4050;
+}
+
 code {
-  /* background-color: lightblue; */
-  background-color: #bebebe;
-  color: black;
-  text-decoration: bold;
+  background-color: #252a33;
+  color: #abb2be;
   padding: 0.1em 0.2em;
 }
+
 pre {
-  background-color: #272822;
+  background-color: #191c22;
   line-height: 1.4;
   overflow-x: auto;
   padding: 1em;
+  border-left: 3px solid #3a4050;
 }
+
 blockquote {
-  border-color: blue;
+  border-color: #5f8faf;
+  color: #6c7a88;
 }
 
 h1,
@@ -42,77 +52,118 @@ h3,
 h4,
 h5,
 h6 {
-  color: #ddd;
-}
-h1::before {
-  color: var(--darkMaincolor);
-  content: "# ";
-}
-h2::before {
-  color: var(--darkMaincolor);
-  content: "## ";
-}
-h3::before {
-  color: var(--darkMaincolor);
-  content: "### ";
-}
-h4::before {
-  color: var(--darkMaincolor);
-  content: "#### ";
-}
-h5::before {
-  color: var(--darkMaincolor);
-  content: "##### ";
-}
-h6::before {
-  color: var(--darkMaincolor);
-  content: "###### ";
+  color: #b8c8d8;
 }
 
+h1::before { color: var(--darkMaincolor); content: "# "; }
+h2::before { color: var(--darkMaincolor); content: "## "; }
+h3::before { color: var(--darkMaincolor); content: "### "; }
+h4::before { color: var(--darkMaincolor); content: "#### "; }
+h5::before { color: var(--darkMaincolor); content: "##### "; }
+h6::before { color: var(--darkMaincolor); content: "###### "; }
+
 a {
-  border-bottom: 3px solid var(--darkMaincolor);
+  border-bottom: 1px solid var(--darkMaincolor);
   color: inherit;
 }
 a:hover {
   background-color: var(--darkMaincolor);
-  color: black;
+  color: #1c1f25;
+}
+
+.meta {
+  color: #5c6b78;
+}
+
+time {
+  color: #5c6b78;
 }
 
 .site-description a {
-  color: #ddd;
+  color: #9aabb4;
 }
 .site-description a:hover {
-  color: black;
+  color: #1c1f25;
 }
 
 .tags a {
-  border-bottom: 3px solid var(--darkMaincolor);
+  border-bottom: 1px solid var(--darkMaincolor);
 }
 .tags a:hover {
   background-color: var(--darkMaincolor);
-  color: black;
+  color: #1c1f25;
 }
 
 .site-title a {
-  color: white;
+  color: #b8c8d8;
   text-decoration: none !important;
 }
 
-.header nav,
-.footer {
-  border-color: #333;
+header {
+  border-bottom-color: #3a4050;
+}
+
+footer {
+  border-top-color: #3a4050;
+  color: #5c6b78;
+}
+
+.border {
+  border-color: #3a4050;
+}
+
+img {
+  border-color: #2e333e;
+}
+
+table th {
+  background-color: #22262f;
+  border-color: #3a4050;
+}
+
+table td {
+  border-color: #3a4050;
 }
 
 .highlight {
-  background-color: #333;
+  background-color: #191c22;
 }
+
 .soc:hover {
-  color: black;
+  color: #1c1f25;
 }
+
 .draft-label {
   color: var(--darkMaincolor);
-  background-color: blue;
+  background-color: #2a3040;
 }
+
+.line-divider {
+  border-top-color: #3a4050;
+}
+
+/* Pagination in dark mode */
+.page-link {
+  border-color: var(--darkMaincolor);
+  color: var(--darkMaincolor);
+}
+
+.page-link:hover {
+  background-color: var(--darkMaincolor);
+  color: #1c1f25;
+  border-bottom-color: var(--darkMaincolor);
+}
+
+.page-info {
+  color: #5c6b78;
+}
+
+/* Code language labels */
+.highlight pre code[class*="language-"]::before {
+  background: #3a4050;
+  color: #9aabb4;
+}
+
 .highlight pre code[class=language-javaScript]::before,
 .highlight pre code[class="language-js"]::before {
   content: "js";
@@ -122,40 +173,39 @@ a:hover {
 .highlight pre code[class*='language-yml']::before,
 .highlight pre code[class*='language-yaml']::before {
   content: 'yaml';
-  background: #f71e6a;
+  background: #cb4b16;
   color: white;
 }
 .highlight pre code[class*='language-shell']::before,
 .highlight pre code[class*='language-bash']::before,
 .highlight pre code[class*='language-sh']::before {
   content: 'shell';
-  background: green;
-  color:white
+  background: #859900;
+  color: white;
 }
-.highlight pre code[class*='language-json']::before{
+.highlight pre code[class*='language-json']::before {
   content: 'json';
-  background: dodgerblue;
-   color: #000000 
+  background: #268bd2;
+  color: #fdf6e3;
 }
 .highlight pre code[class*='language-python']::before,
 .highlight pre code[class*='language-py']::before {
   content: 'py';
-  background: blue;
-  color: yellow ;
+  background: #6c71c4;
+  color: #fdf6e3;
 }
-.highlight pre code[class*='language-css']::before{
+.highlight pre code[class*='language-css']::before {
   content: 'css';
-  background: cyan;
-  color: black ;
+  background: #2aa198;
+  color: #fdf6e3;
 }
-.highlight pre code[class*='language-go']::before{
+.highlight pre code[class*='language-go']::before {
   content: 'Go';
-  background: cyan;
-  color: royalblue ;
+  background: #268bd2;
+  color: #fdf6e3;
 }
-.highlight pre code[class*='language-md']::before,
-.highlight pre code[class*='language-md']::before{
+.highlight pre code[class*='language-md']::before {
   content: 'Markdown';
-  background: royalblue;
-  color: whitesmoke ;
+  background: #b58900;
+  color: #fdf6e3;
 }
