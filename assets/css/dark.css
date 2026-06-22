@@ -281,10 +281,3 @@ table td {
 .label-icon {
   color: var(--darkMaincolor);
 }
-
-.label-text:active,
-.label-text.copied {
-  background-color: #719e07;
-  color: #1c1f25 !important;
-  border-color: #719e07;
-}

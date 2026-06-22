@@ -518,10 +518,7 @@ table td {
 
 /* ── inline file-path / command labels ── */
 .inline-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  vertical-align: middle;
+  display: inline;
 }
 
 /* ASCII marker — excluded from text selection, monospace font */
@@ -531,19 +528,7 @@ table td {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.82em;
   color: var(--maincolor);
-  line-height: 1;
   font-style: normal;
   opacity: 0.75;
-}
-
-/* clickable path/command text */
-.label-text {
-  cursor: pointer;
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-}
-.label-text:active,
-.label-text.copied {
-  background-color: #859900;
-  color: #fdf6e3 !important;
-  border-color: #859900;
+  margin-right: 0.25em;
 }
