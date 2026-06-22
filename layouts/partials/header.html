@@ -28,12 +28,12 @@
 		<script src="{{ .Site.BaseURL }}js/feather.min.js"></script>
 	{{ end }}
 	{{ if .Site.Params.useCDN | default false -}}
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	{{- else -}}
-	{{ $fontstyle := resources.Get "css/fonts.css" | fingerprint }}
-        <link href="{{ $fontstyle.Permalink }}" rel="stylesheet">
+		{{ $fontstyle := resources.Get "css/fonts.css" | fingerprint }}
+		<link href="{{ $fontstyle.Permalink }}" rel="stylesheet">
 	{{ end }}
 
 	{{ $style := resources.Get "css/main.css" | fingerprint }}
@@ -67,6 +67,9 @@
 		</script>
 	{{ end }}
 	
+	<!-- Code block header: language label + copy button -->
+	<script defer src="{{ .Site.BaseURL }}js/code-blocks.js"></script>
+
 	<!-- Custom CSS style get applied last -->
 	{{- if isset .Site.Params "customcss" }}
 		{{ range .Site.Params.customCSS }}

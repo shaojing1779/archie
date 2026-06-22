@@ -110,30 +110,50 @@ figure h4::before {
 }
 
 /* Code blocks */
+
+/* inline code — subtle tint, no syntax highlight */
 code {
   background-color: var(--codebg);
   color: var(--textcolor);
   padding: .1em .2em;
+  font-size: 0.93em;
 }
 
+/* ── code blocks (plain pre + chroma) ── */
 pre {
-  background-color: var(--codebg);
-  line-height: 1.4;
+  background-color: #f6f8fa;
+  line-height: 1.5;
   overflow-x: auto;
   padding: 1em;
-  border-left: 3px solid var(--bordercl);
+  border-left: 2px solid var(--bordercl);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 4px rgba(7, 54, 66, 0.09),
+              inset 0 0 0 1px rgba(7, 54, 66, 0.05);
 }
 
-.highlight pre ::selection {
-  background: rgba(255, 255, 255, 0.2);
-  color: inherit;
+pre.chroma {
+  background-color: #f6f8fa;
+  border-left: 2px solid var(--code-accent, var(--bordercl));
+  padding: 1em;
+  border-radius: 4px;
+  margin: 0;
+  box-shadow: inset 0 1px 4px rgba(7, 54, 66, 0.09),
+              inset 0 0 0 1px rgba(7, 54, 66, 0.05);
 }
 
+pre.chroma code,
 pre code {
   background-color: transparent;
   color: inherit;
-  font-size: 100%;
   padding: 0;
+  font-size: 100%;
+}
+
+/* selection — clearly visible on the light-gray code bg */
+pre ::selection,
+pre *::selection {
+  background: #b3d4ff;
+  color: #1f2328;
 }
 
 /* Containers */
@@ -269,69 +289,57 @@ svg {
 }
 .highlight {
   position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-.highlight pre code[class*="language-"] {
-  -webkit-overflow-scrolling: touch;
-}
-.highlight pre code[class*="language-"]::before {
-  background: #657b83;
-  border-radius: 0 0 0.25rem 0.25rem;
-  color: #fdf6e3;
-  font-size: 12px;
-  letter-spacing: 0.025rem;
-  padding: 0.1rem 0.5rem;
-  position: absolute;
-  right: 1rem;
-  text-align: right;
-  text-transform: uppercase;
-  top: 0;
+  margin: 1.2em 0;
 }
 
-.highlight pre code[class=language-javaScript]::before,
-.highlight pre code[class="language-js"]::before {
-  content: "js";
-  background: #f7df1e;
-  color: black;
+/* ── floating overlay: lang label + copy icon (shown on hover) ── */
+.code-overlay {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  z-index: 1;
 }
-.highlight pre code[class*='language-yml']::before,
-.highlight pre code[class*='language-yaml']::before {
-  content: 'yaml';
-  background: #cb4b16;
-  color: white;
+.highlight:hover .code-overlay {
+  opacity: 1;
+  pointer-events: auto;
 }
-.highlight pre code[class*='language-shell']::before,
-.highlight pre code[class*='language-bash']::before,
-.highlight pre code[class*='language-sh']::before {
-  content: 'shell';
-  background: #859900;
-  color: white;
+
+.code-lang {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #93a1a1;
+  user-select: none;
+  line-height: 1;
 }
-.highlight pre code[class*='language-json']::before {
-  content: 'json';
-  background: #268bd2;
-  color: #fdf6e3;
+
+.code-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(253, 246, 227, 0.88);
+  border: 1px solid #c0baa8;
+  color: #657b83;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 3px;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  line-height: 0;
 }
-.highlight pre code[class*='language-python']::before,
-.highlight pre code[class*='language-py']::before {
-  content: 'py';
-  background: #6c71c4;
-  color: #fdf6e3;
+.code-copy:hover {
+  color: var(--maincolor);
+  border-color: var(--maincolor);
+  background: rgba(253, 246, 227, 0.96);
 }
-.highlight pre code[class*='language-css']::before {
-  content: 'css';
-  background: #2aa198;
-  color: #fdf6e3;
-}
-.highlight pre code[class*='language-go']::before {
-  content: 'Go';
-  background: #268bd2;
-  color: #fdf6e3;
-}
-.highlight pre code[class*='language-md']::before {
-  content: 'Markdown';
-  background: #b58900;
-  color: #fdf6e3;
+.code-copy.copied {
+  color: #859900;
+  border-color: #859900;
 }
 
 /* table */
@@ -429,3 +437,77 @@ table td {
   color: #fdf6e3;
   border-bottom: 1px solid var(--maincolor);
 }
+
+/* ── Chroma syntax highlighting — GitHub Light ── */
+.chroma { background-color:#f6f8fa; }
+.chroma .err { color:#f6f8fa;background-color:#82071e }
+.chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+.chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+.chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+.chroma .hl { background-color:#dedede }
+.chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+.chroma .ln  { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
+.chroma .line { display:flex; }
+.chroma .k  { color:#cf222e }
+.chroma .kc { color:#cf222e }
+.chroma .kd { color:#cf222e }
+.chroma .kn { color:#cf222e }
+.chroma .kp { color:#cf222e }
+.chroma .kr { color:#cf222e }
+.chroma .kt { color:#cf222e }
+.chroma .na { color:#1f2328 }
+.chroma .nc { color:#1f2328 }
+.chroma .no { color:#0550ae }
+.chroma .nd { color:#0550ae }
+.chroma .ni { color:#6639ba }
+.chroma .nl { color:#900;font-weight:bold }
+.chroma .nn { color:#24292e }
+.chroma .nx { color:#1f2328 }
+.chroma .nt { color:#0550ae }
+.chroma .nb { color:#6639ba }
+.chroma .bp { color:#6a737d }
+.chroma .nv { color:#953800 }
+.chroma .vc { color:#953800 }
+.chroma .vg { color:#953800 }
+.chroma .vi { color:#953800 }
+.chroma .vm { color:#953800 }
+.chroma .nf { color:#6639ba }
+.chroma .fm { color:#6639ba }
+.chroma .s  { color:#0a3069 }
+.chroma .sa { color:#0a3069 }
+.chroma .sb { color:#0a3069 }
+.chroma .sc { color:#0a3069 }
+.chroma .dl { color:#0a3069 }
+.chroma .sd { color:#0a3069 }
+.chroma .s2 { color:#0a3069 }
+.chroma .se { color:#0a3069 }
+.chroma .sh { color:#0a3069 }
+.chroma .si { color:#0a3069 }
+.chroma .sx { color:#0a3069 }
+.chroma .sr { color:#0a3069 }
+.chroma .s1 { color:#0a3069 }
+.chroma .ss { color:#032f62 }
+.chroma .m  { color:#0550ae }
+.chroma .mb { color:#0550ae }
+.chroma .mf { color:#0550ae }
+.chroma .mh { color:#0550ae }
+.chroma .mi { color:#0550ae }
+.chroma .il { color:#0550ae }
+.chroma .mo { color:#0550ae }
+.chroma .o  { color:#0550ae }
+.chroma .ow { color:#0550ae }
+.chroma .or { color:#0550ae }
+.chroma .p  { color:#1f2328 }
+.chroma .c  { color:#57606a }
+.chroma .ch { color:#57606a }
+.chroma .cm { color:#57606a }
+.chroma .c1 { color:#57606a }
+.chroma .cs { color:#57606a }
+.chroma .cp { color:#57606a }
+.chroma .cpf { color:#57606a }
+.chroma .gd { color:#82071e;background-color:#ffebe9 }
+.chroma .ge { color:#1f2328 }
+.chroma .gi { color:#116329;background-color:#dafbe1 }
+.chroma .go { color:#1f2328 }
+.chroma .gl { text-decoration:underline }
+.chroma .w  { color:#fff }
