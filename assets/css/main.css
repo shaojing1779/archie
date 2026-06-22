@@ -521,6 +521,14 @@ table td {
   display: inline;
 }
 
+/* shortcode 渲染为 inline span，Markdown 换行不会自动断行；
+   作为段落直接子元素时改为 block，每条命令/路径独占一行 */
+p > .inline-label,
+li > .inline-label {
+  display: block;
+  margin: 0.15em 0;
+}
+
 /* ASCII marker — excluded from text selection, monospace font */
 .label-icon {
   user-select: none;
