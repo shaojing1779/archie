@@ -278,6 +278,10 @@ table td {
 .chroma .w  { color:#6e7681 }
 
 /* ── inline file-path / command labels (dark mode) ── */
+.label-icon {
+  color: var(--darkMaincolor);
+}
+
 .label-text:active,
 .label-text.copied {
   background-color: #719e07;

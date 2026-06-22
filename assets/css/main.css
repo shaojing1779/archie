@@ -524,13 +524,16 @@ table td {
   vertical-align: middle;
 }
 
-/* emoji wrapper — excluded from text selection */
+/* ASCII marker — excluded from text selection, monospace font */
 .label-icon {
   user-select: none;
   -webkit-user-select: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82em;
+  color: var(--maincolor);
   line-height: 1;
   font-style: normal;
-  font-size: 1em;
+  opacity: 0.75;
 }
 
 /* clickable path/command text */
