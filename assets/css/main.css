@@ -111,34 +111,34 @@ figure h4::before {
 
 /* Code blocks */
 
-/* inline code — subtle tint, no syntax highlight */
+/* inline code — same style as code blocks: page-bg + border */
 code {
-  background-color: var(--codebg);
+  background-color: var(--bgcolor);
   color: var(--textcolor);
-  padding: .1em .2em;
+  border: 1px solid var(--bordercl);
+  border-radius: 3px;
+  padding: .1em .3em;
   font-size: 0.93em;
 }
 
 /* ── code blocks (plain pre + chroma) ── */
 pre {
-  background-color: #f6f8fa;
+  background-color: var(--bgcolor);
   line-height: 1.5;
   overflow-x: auto;
   padding: 1em;
   border-left: 2px solid var(--bordercl);
   border-radius: 4px;
-  box-shadow: inset 0 1px 4px rgba(7, 54, 66, 0.09),
-              inset 0 0 0 1px rgba(7, 54, 66, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(7, 54, 66, 0.08);
 }
 
 pre.chroma {
-  background-color: #f6f8fa;
+  background-color: var(--bgcolor);
   border-left: 2px solid var(--code-accent, var(--bordercl));
   padding: 1em;
   border-radius: 4px;
   margin: 0;
-  box-shadow: inset 0 1px 4px rgba(7, 54, 66, 0.09),
-              inset 0 0 0 1px rgba(7, 54, 66, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(7, 54, 66, 0.08);
 }
 
 pre.chroma code,
@@ -146,6 +146,8 @@ pre code {
   background-color: transparent;
   color: inherit;
   padding: 0;
+  border: none;
+  box-shadow: none;
   font-size: 100%;
 }
 
@@ -287,12 +289,13 @@ svg {
   margin-left: 6px;
   background-color: #eee8d5;
 }
-.highlight {
+.highlight,
+.code-wrapper {
   position: relative;
   margin: 1.2em 0;
 }
 
-/* ── floating overlay: lang label + copy icon (shown on hover) ── */
+/* ── floating overlay: copy icon (shown on hover) ── */
 .code-overlay {
   position: absolute;
   top: 7px;
@@ -305,7 +308,8 @@ svg {
   pointer-events: none;
   z-index: 1;
 }
-.highlight:hover .code-overlay {
+.highlight:hover .code-overlay,
+.code-wrapper:hover .code-overlay {
   opacity: 1;
   pointer-events: auto;
 }
@@ -439,7 +443,7 @@ table td {
 }
 
 /* ── Chroma syntax highlighting — GitHub Light ── */
-.chroma { background-color:#f6f8fa; }
+.chroma { background-color:var(--bgcolor); }
 .chroma .err { color:#f6f8fa;background-color:#82071e }
 .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
 .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
@@ -511,3 +515,32 @@ table td {
 .chroma .go { color:#1f2328 }
 .chroma .gl { text-decoration:underline }
 .chroma .w  { color:#fff }
+
+/* ── inline file-path / command labels ── */
+.inline-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  vertical-align: middle;
+}
+
+/* emoji wrapper — excluded from text selection */
+.label-icon {
+  user-select: none;
+  -webkit-user-select: none;
+  line-height: 1;
+  font-style: normal;
+  font-size: 1em;
+}
+
+/* clickable path/command text */
+.label-text {
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.label-text:active,
+.label-text.copied {
+  background-color: #859900;
+  color: #fdf6e3 !important;
+  border-color: #859900;
+}

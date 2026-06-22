@@ -28,30 +28,33 @@ hr {
 }
 
 code {
-  background-color: #252a33;
+  background-color: #1c1f25;
   color: #abb2be;
-  padding: 0.1em 0.2em;
+  border: 1px solid #3a4050;
+  border-radius: 3px;
+  padding: 0.1em 0.3em;
   font-size: 0.93em;
 }
 
 pre {
-  background-color: #161b22;
+  background-color: #1c1f25;
   border-left: 2px solid #3a4050;
   border-radius: 4px;
-  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.45),
-              inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 pre.chroma {
-  background-color: #161b22;
+  background-color: #1c1f25;
   border-left: 2px solid var(--code-accent, #3a4050);
   border-radius: 4px;
-  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.45),
-              inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
-pre.chroma code {
+pre.chroma code,
+pre code {
   background-color: transparent;
+  border: none;
+  box-shadow: none;
   padding: 0;
 }
 
@@ -195,7 +198,7 @@ table td {
 }
 
 /* ── Chroma syntax highlighting — GitHub Dark ── */
-.chroma { color:#e6edf3;background-color:#161b22; }
+.chroma { color:#e6edf3;background-color:#1c1f25; }
 .chroma .err { color:#f85149 }
 .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
 .chroma .lntd  { vertical-align:top;padding:0;margin:0;border:0; }
@@ -273,3 +276,11 @@ table td {
 .chroma .gt { color:#ff7b72 }
 .chroma .gl { text-decoration:underline }
 .chroma .w  { color:#6e7681 }
+
+/* ── inline file-path / command labels (dark mode) ── */
+.label-text:active,
+.label-text.copied {
+  background-color: #719e07;
+  color: #1c1f25 !important;
+  border-color: #719e07;
+}
