@@ -69,6 +69,11 @@
 	
 	<!-- Code block header: language label + copy button -->
 	<script defer src="{{ .Site.BaseURL }}js/code-blocks.js"></script>
+	<script defer src="{{ .Site.BaseURL }}js/post-nav.js"></script>
+
+	{{ if and .IsPage (eq .Section "posts") }}
+	<script defer src="{{ .Site.BaseURL }}js/toc.js"></script>
+	{{ end }}
 
 	<!-- Custom CSS style get applied last -->
 	{{- if isset .Site.Params "customcss" }}

@@ -4,13 +4,13 @@
   <div class="pagination">
     <span class="page-prev">
       {{ if $pag.HasPrev }}
-      <a href="{{ $pag.Prev.URL }}" class="page-link" aria-label="Previous">← Prev</a>
+      <a href="{{ $pag.Prev.URL | relLangURL }}" class="page-link" data-nav="prev" aria-label="Previous">← Prev</a>
       {{ end }}
     </span>
     <span class="page-info">{{ $pag.PageNumber }} / {{ $pag.TotalPages }}</span>
     <span class="page-next">
       {{ if $pag.HasNext }}
-      <a href="{{ $pag.Next.URL }}" class="page-link" aria-label="Next">Next →</a>
+      <a href="{{ $pag.Next.URL | relLangURL }}" class="page-link" data-nav="next" aria-label="Next">Next →</a>
       {{ end }}
     </span>
   </div>

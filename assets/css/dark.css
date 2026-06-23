@@ -127,6 +127,13 @@ header {
   border-bottom-color: #3a4050;
 }
 
+header .site-nav a {
+  color: #9aabb4;
+}
+header .site-nav a:hover {
+  color: #1c1f25;
+}
+
 footer {
   border-top-color: #3a4050;
   color: #5c6b78;
@@ -280,4 +287,32 @@ table td {
 /* ── inline file-path / command labels (dark mode) ── */
 .label-icon {
   color: var(--darkMaincolor);
+}
+
+/* ── Floating table of contents (dark mode) ── */
+@media screen and (min-width: 1100px) {
+  .toc-toggle {
+    background: rgba(28, 31, 37, 0.92);
+    color: #5c6b78;
+    border-color: #3a4050;
+  }
+  .toc-toggle:hover {
+    color: var(--darkMaincolor);
+    border-color: var(--darkMaincolor);
+    background: rgba(28, 31, 37, 0.98);
+  }
+  .toc-panel {
+    background: rgba(28, 31, 37, 0.94);
+    border-color: #3a4050;
+  }
+  .toc-title {
+    color: #5c6b78;
+  }
+  .toc-panel a {
+    color: #5c6b78;
+  }
+  .toc-panel a:hover,
+  .toc-panel a.active {
+    color: var(--darkMaincolor);
+  }
 }

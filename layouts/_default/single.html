@@ -1,5 +1,13 @@
 {{ define "main" }}
 <main>
+	{{ if and (eq .Section "posts") (.TableOfContents) }}
+	<button id="toc-toggle" class="toc-toggle" type="button" aria-controls="toc-panel" aria-expanded="false" title="目录">目录</button>
+	<aside id="toc-panel" class="toc-panel" aria-label="页面目录">
+		<div class="toc-title">目录</div>
+		{{ .TableOfContents }}
+	</aside>
+	{{ end }}
+
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
@@ -50,10 +58,10 @@
 		<div class="line-divider"></div>
 		<div class="post-navigation">
 			{{ if .Next }}
-			  <a href="{{ .Next.Permalink }}" class="next-post">Prev: {{ .Next.Title }}</a>
+			  <a href="{{ .Next.Permalink }}" class="next-post" data-nav="prev">← {{ .Next.Title }}</a>
 		    {{ end }}
 			{{ if .Prev }}
-			  <a href="{{ .Prev.Permalink }}" class="prev-post">Next: {{ .Prev.Title }}</a>
+			  <a href="{{ .Prev.Permalink }}" class="prev-post" data-nav="next">{{ .Prev.Title }} →</a>
 			{{ end }}
 		</div>
 	</article>
